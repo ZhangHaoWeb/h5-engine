@@ -1,0 +1,25 @@
+
+.main-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    flex-grow: 1;
+}
+
+.header {
+    border-bottom: 1px solid #262626;
+    padding: 20px 40px;
+}
+
+.sidebar {
+    width: 200px;
+    border-right: 1px solid #262626;
+}
+
+.content {
+    border-right: 1px solid #262626;
+    flex-grow: 1;
+}
+
+.property {
+    width: 300px;
+}

@@ -1,7 +1,15 @@
+
+
 export default function SideBar() {
     return (
-        <>
-            <div>this is sidebar</div>
-        </>
+        <div className="sidebar">
+            <ul>
+                <li>com</li>
+                <li>com</li>
+                <li>com</li>
+                <li>com</li>
+                <li>com</li>
+            </ul>
+        </div>
     )
 }

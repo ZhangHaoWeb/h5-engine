@@ -1,7 +1,5 @@
 export default function Property() {
     return (
-        <>
-            <div>this is property</div>
-        </>
+        <div className="property">this is property</div>
     )
 }
