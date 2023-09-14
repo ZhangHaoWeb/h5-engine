@@ -7,8 +7,8 @@ export default function Content() {
 
     const calculateEdit = useCallback(() => {
         const dynamicSize = {
-            width: width > 0 && `${width}px`,
-            height: height > 0 && `${height}px`
+            width: `${width}px`,
+            height: `${height}px`
         };
 
         return (

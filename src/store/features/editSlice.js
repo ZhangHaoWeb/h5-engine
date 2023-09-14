@@ -2,8 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     edit: {
-        width: -1,
-        height: -1
+        width: 1300,
+        height: 750
     },
 }
 
