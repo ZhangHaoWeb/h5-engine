@@ -23,13 +23,14 @@
 
 .sidebar {
     width: 200px;
+    padding:10px;
     border-right: 1px solid #262626;
 }
 
 .content {
     border-right: 1px solid #262626;
     flex-grow: 1;
-    padding:25px;
+    padding:10px;
 
     .editor {
         border: 1px solid #262626;
@@ -40,4 +41,5 @@
 
 .property {
     width: 300px;
+    padding:10px;
 }
