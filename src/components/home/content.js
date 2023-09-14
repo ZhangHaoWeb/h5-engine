@@ -1,7 +1,12 @@
+import Grid from "./grid"
+
 export default function Content() {
     return (
         <div className="content">
-            this is content.
+            <div className="editor">
+
+                <Grid />
+            </div>
         </div>
     )
 }
