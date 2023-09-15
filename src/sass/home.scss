@@ -27,6 +27,22 @@
     width: 200px;
     padding:10px;
     border-right: 1px solid #262626;
+
+    .components-list {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .component-item {
+        border: 1px solid #262626;
+        margin-bottom: 10px;
+        text-align: center;
+        padding: 8px 10px;
+        border-radius: 3px;
+        width: 60px;
+        margin: 5px;
+        
+    }
 }
 
 .content {
@@ -35,13 +51,11 @@
     padding:10px;
     height: 100%;
     box-sizing: border-box;
-    // overflow: scroll;
+    overflow: auto;
 
     .editor {
         margin: 0 auto;
-        border: 1px solid #262626;
         border-radius: 2px;
-        box-sizing: border-box;
         // cursor: grab;
 
         // &:active {

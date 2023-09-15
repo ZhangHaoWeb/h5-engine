@@ -9,12 +9,12 @@ export default function Grid() {
             <defs>
                 <pattern
                     id="smallGrid"
-                    width="7.236328125"
-                    height="7.236328125"
+                    width="7.5"
+                    height="7.5"
                     patternUnits="userSpaceOnUse"
                 >
                     <path
-                        d="M 7.236328125 0 L 0 0 0 7.236328125"
+                        d="M 7.5 0 L 0 0 0 7.5"
                         fill="none"
                         stroke="rgba(207, 207, 207, 0.3)"
                         strokeWidth="1"
@@ -23,13 +23,13 @@ export default function Grid() {
                 </pattern>
                 <pattern
                     id="grid"
-                    width="36.181640625"
-                    height="36.181640625"
+                    width="37.5"
+                    height="37.5"
                     patternUnits="userSpaceOnUse"
                 >
-                    <rect width="36.181640625" height="36.181640625" fill="url(#smallGrid)"></rect>
+                    <rect width="37.5" height="37.5" fill="url(#smallGrid)"></rect>
                     <path
-                        d="M 36.181640625 0 L 0 0 0 36.181640625"
+                        d="M 37.5 0 L 0 0 0 37.5"
                         fill="none"
                         stroke="rgba(186, 186, 186, 0.5)"
                         strokeWidth="1"
