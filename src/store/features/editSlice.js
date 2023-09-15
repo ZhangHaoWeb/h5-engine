@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     edit: {
-        width: 1300,
+        width: 1200,
         height: 750
     },
 }
@@ -12,13 +12,13 @@ export const editSlice = createSlice({
     initialState,
     reducers : {
         changeEditSize: (state, action) => {
-            state.edit = {...action.payload}
+            state.edit = {
+                width: action.payload.width > 0 ? action.payload.width : initialState.edit.width,
+                height: action.payload.height > 0 ? action.payload.height : initialState.edit.height
+            }
         },
         resetEditSize: state => {
-            state.edit = {
-                width: -1,
-                height: -1
-            }
+            state.edit = initialState
         }
     },
 })

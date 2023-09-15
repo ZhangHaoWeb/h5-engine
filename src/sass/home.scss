@@ -3,6 +3,8 @@
     display: flex;
     justify-content: flex-start;
     flex-grow: 1;
+    height: 100%;
+    overflow: hidden;
 }
 
 .header {
@@ -31,12 +33,20 @@
     border-right: 1px solid #262626;
     flex-grow: 1;
     padding:10px;
+    height: 100%;
+    box-sizing: border-box;
+    // overflow: scroll;
 
     .editor {
         margin: 0 auto;
         border: 1px solid #262626;
-        height: 100%;
         border-radius: 2px;
+        box-sizing: border-box;
+        // cursor: grab;
+
+        // &:active {
+        //     cursor: grabbing ;
+        // }
     }
 }
 
