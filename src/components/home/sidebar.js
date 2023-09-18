@@ -1,32 +1,20 @@
 
 
 export default function SideBar() {
+    const componentList = new Array(5).fill(0)
+
+    const handlerDragStart = (e, index) => {
+        e.dataTransfer.setData('index', index)
+    }
+
     return (
         <div className="sidebar">
             <ul className="components-list">
-                <li className="component-item">
-                    TEXT
-                </li>
-
-                <li className="component-item">
-                    BUTTON
-                </li>
-
-                <li className="component-item">
-                    IMAGE
-                </li>
-
-                <li className="component-item">
-                    LINK
-                </li>
-
-                <li className="component-item">
-                    INPUT
-                </li>
-
-                <li className="component-item">
-                    RADIO
-                </li>
+                {componentList.map((item, index) => (
+                    <li className="component-item" draggable key={index} onDragStart={(e) => handlerDragStart(e, index)}>
+                        TEXT
+                    </li>
+                ))}
             </ul>
         </div>
     )

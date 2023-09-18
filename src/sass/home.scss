@@ -35,18 +35,22 @@
     }
     .component-item {
         border: 1px solid #262626;
-        margin-bottom: 10px;
         text-align: center;
         padding: 8px 10px;
         border-radius: 3px;
         width: 60px;
         margin: 5px;
+        cursor: grab;
+        background: #313030;
         
+        &:active {
+            cursor: grabbing;
+        }
     }
 }
 
 .content {
-    border-right: 1px solid #262626;
+    border-right: 1px solid #151414;
     flex-grow: 1;
     padding:10px;
     height: 100%;
