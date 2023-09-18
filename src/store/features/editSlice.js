@@ -12,9 +12,10 @@ export const editSlice = createSlice({
     initialState,
     reducers : {
         changeEditSize: (state, action) => {
+
             state.edit = {
-                width: action.payload.width > 0 ? action.payload.width : initialState.edit.width,
-                height: action.payload.height > 0 ? action.payload.height : initialState.edit.height
+                width: action.payload.width && Number(action.payload.width),
+                height: action.payload.height && Number(action.payload.height)
             }
         },
         resetEditSize: state => {
