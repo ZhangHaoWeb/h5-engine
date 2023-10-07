@@ -14,12 +14,18 @@ export default function Content() {
         return (
             <div className="editor" style={dynamicSize}>
                 <Grid />
+                <div className="editor-item">fdsafdsaf</div>
             </div>
         )
     }, [width, height])
 
+    const handlerDrop = (e) => {
+        const component = e.dataTransfer.getData('component')
+        console.log(component)
+    }
+
     return (
-        <div className="content">
+        <div className="content" onDrop={(e) => handlerDrop(e)} onDragOver={e => e.preventDefault()}>
             {calculateEdit()}
         </div>
     )

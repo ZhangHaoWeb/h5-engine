@@ -1,21 +1,27 @@
-
+import { componentList } from "src/constants/components"
 
 export default function SideBar() {
-    const componentList = new Array(5).fill(0)
-
-    const handlerDragStart = (e, index) => {
-        e.dataTransfer.setData('index', index)
+    const handlerDragStart = (e, id, idx) => {
+        e.dataTransfer.setData('component', `${id}-${idx}`)
     }
 
     return (
         <div className="sidebar">
-            <ul className="components-list">
-                {componentList.map((item, index) => (
-                    <li className="component-item" draggable key={index} onDragStart={(e) => handlerDragStart(e, index)}>
-                        TEXT
-                    </li>
+            <div className="sidebar-category">
+                {componentList.map((category, index) => (
+                   <div key={index} className="sidebar-category-box">
+                        <div className="sidebar-category-title">{category.category}</div>
+                        <ul className="components-list">
+                            {category.list.map((item, index) => (
+                                <li className="component-item" draggable key={index} onDragStart={(e) => handlerDragStart(e, category.id, index)}>
+                                    {item.label}
+                                </li>
+                            ))}
+                        </ul>
+                   </div>
                 ))}
-            </ul>
+            </div>
+
         </div>
     )
 }
