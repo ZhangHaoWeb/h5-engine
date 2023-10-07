@@ -24,11 +24,12 @@
 }
 
 .sidebar {
-    width: 200px;
+    width: 220px;
     padding:10px;
     border-right: 1px solid #262626;
     -webkit-user-select: none;
     user-select: none;
+    box-sizing: border-box;
 
     .sidebar-category-box {
         margin-bottom: 20px;
@@ -45,7 +46,6 @@
         flex-wrap: wrap;
     }
     .component-item {
-        border: 1px solid #262626;
         text-align: center;
         padding: 8px 10px;
         border-radius: 3px;
@@ -67,9 +67,9 @@
     height: 100%;
     box-sizing: border-box;
     overflow: auto;
+    position: relative;
 
     .editor {
-        position: relative;
         margin: 0 auto;
         border-radius: 2px;
 

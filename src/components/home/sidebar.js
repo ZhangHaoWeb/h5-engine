@@ -1,4 +1,4 @@
-import { componentList } from "src/constants/components"
+import { SYS_ComponentList } from "src/constants/components"
 
 export default function SideBar() {
     const handlerDragStart = (e, id, idx) => {
@@ -8,7 +8,7 @@ export default function SideBar() {
     return (
         <div className="sidebar">
             <div className="sidebar-category">
-                {componentList.map((category, index) => (
+                {SYS_ComponentList.map((category, index) => (
                    <div key={index} className="sidebar-category-box">
                         <div className="sidebar-category-title">{category.category}</div>
                         <ul className="components-list">

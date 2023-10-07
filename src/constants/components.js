@@ -1,15 +1,22 @@
-export const componentList =  [
+export const SYS_ComponentList =  [
     {
         id: 0,
         category: "基础",
         list: [
             {
                 label: "文字",
-                defaultValue: "TEXT"
+                defaultValue: "TEXT",
             },
             {
                 label: "按钮",
-                defaultValue: "BUTTON"
+                defaultValue: "BUTTON",
+                style: {
+                    width: '60px',
+                    background: '#313030',
+                    width: '60px',
+                    padding: '8px 10px',
+                    borderRadius: '3px'
+                }
             },
             {
                 label: "链接",
