@@ -26,10 +26,17 @@ export const editSlice = createSlice({
                 ...state.componentList,
                 action.payload
             ]
+        },
+        editComponentStyle: (state, action) => {
+            const idx = action.payload.idx
+            state.componentList[idx].style = {
+                ...state.componentList[idx].style,
+                ...action.payload.style
+            }
         }
     },
 })
 
-export const {changeEditSize, resetEditSize, addComponent} = editSlice.actions
+export const {changeEditSize, resetEditSize, addComponent, editComponentStyle} = editSlice.actions
 
 export default editSlice.reducer
