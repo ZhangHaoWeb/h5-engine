@@ -12,14 +12,15 @@ export const SYS_ComponentList =  [
                 }
             },
             {
-                type: "BUTTON",
+                type: "Button",
                 label: "按钮",
                 defaultValue: "BUTTON",
                 style: {
                     width: "60px",
                     background: "#313030",
                     padding: "8px 10px",
-                    borderRadius: "3px"
+                    borderRadius: "3px",
+                    textAlign: "center"
                 }
             },
             {

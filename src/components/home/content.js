@@ -1,37 +1,14 @@
-import { useCallback } from "react"
+import { Fragment, useCallback } from "react"
 import { shallowEqual, useDispatch, useSelector } from "react-redux"
 import { SYS_ComponentList } from "src/constants/components"
-import { addComponent, editComponentStyle } from 'src/store/features/editSlice';    
+import { addComponent, editComponentStyle } from 'src/store/features/editSlice';
+import * as AllComponent from "src/components/common"
 import Grid from "./grid"
 
 export default function Content() {
     const dispatch = useDispatch()
     const { width, height } = useSelector(state => state.editReducer.edit)
     const { componentList } = useSelector(state => state.editReducer, shallowEqual)
-
-    const calculateEdit = () => {
-        const dynamicSize = {
-            width: `${width + 1}px`,
-            height: `${height + 1}px`
-        };
-
-        return (
-            <div className="editor" style={dynamicSize}>
-                <Grid />
-                {componentList.map((item, idx) => {
-                    return <div
-                            key={idx}
-                            className="editor-item"
-                            style={item.style}
-                            onMouseDown={(e) => handlerMouseDown(e, idx)}
-                            contentEditable={item.type === "TEXT" || item.type === "LINK"}
-                        >
-                            {item.defaultValue}
-                        </div>
-                })}
-            </div>
-        )
-    }
 
     const handlerMouseDown = (e, idx) => {
         const startY = e.clientY
@@ -84,8 +61,35 @@ export default function Content() {
             ...categoryList.list[idx],
             style
         }
-        console.log(component)
         dispatch(addComponent(component))
+    }
+
+
+    const calculateEdit = () => {
+        const dynamicSize = {
+            width: `${width + 1}px`,
+            height: `${height + 1}px`
+        };
+
+        return (
+            <div className="editor" style={dynamicSize}>
+                <Grid />
+                {componentList.map((item, idx) => {
+                    const Component = AllComponent[item.type]
+                    return (
+                        <div 
+                            className="editor-component"
+                            data-type={item.type}
+                            key={idx}
+                            onMouseDown={(e) => handlerMouseDown(e, idx)}
+                            style={item.style}
+                        >
+                            <Component {...item} />
+                        </div>
+                    )
+                })}
+            </div>
+        )
     }
 
     return (
