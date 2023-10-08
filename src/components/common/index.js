@@ -1,5 +1,3 @@
-import Button from "./button/button";
-
-export {
-    Button
-}
+export {default as ButtonComponent} from './button/button'
+export {default as TextComponent} from './text/text'
+export {default as LinkComponent} from './link/link'

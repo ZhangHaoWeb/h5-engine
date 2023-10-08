@@ -72,14 +72,16 @@
     .editor {
         margin: 0 auto;
         border-radius: 2px;
+        user-select: none;
+        box-sizing: border-box;
 
         .editor-component {
             position: absolute;
             top: 0;
             left: 0;
+            user-select: none;
+            box-sizing: border-box;
         }
-        -webkit-user-select: none;
-        user-select: none;
     }
 }
 

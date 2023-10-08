@@ -4,15 +4,15 @@ export const SYS_ComponentList =  [
         category: "基础",
         list: [
             {
-                type: "TEXT",
+                type: "TextComponent",
                 label: "文字",
-                defaultValue: "编辑文字",
+                defaultValue: "双击编辑",
                 style: {
                     fontSize: "16px"
                 }
             },
             {
-                type: "Button",
+                type: "ButtonComponent",
                 label: "按钮",
                 defaultValue: "BUTTON",
                 style: {
@@ -24,9 +24,9 @@ export const SYS_ComponentList =  [
                 }
             },
             {
-                type: "LINK",
+                type: "LinkComponent",
                 label: "链接",
-                defaultValue: "百度一下",
+                defaultValue: "https://",
                 style: {
                     color: "#4395ff"
                 }
