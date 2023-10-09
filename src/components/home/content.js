@@ -13,10 +13,7 @@ export default function Content() {
 
     const handlerMouseDown = (e, idx) => {
         e.stopPropagation()
-        if (componentList[idx].type == "ImageComponent") {
-            e.preventDefault()
-        }
-
+        e.preventDefault()
         const startY = e.clientY
         const startX = e.clientX
         const componentDOM = e.target.parentNode
