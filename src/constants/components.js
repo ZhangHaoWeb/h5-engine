@@ -17,9 +17,7 @@ export const SYS_ComponentList =  [
                 defaultValue: "BUTTON",
                 style: {
                     background: "#313030",
-                    padding: "8px 10px",
                     borderRadius: "3px",
-                    textAlign: "center"
                 }
             },
             {

@@ -1,4 +1,4 @@
-import { useRef } from "react"
+import { useEffect, useRef } from "react"
 import { shallowEqual, useDispatch, useSelector } from "react-redux"
 import { SYS_ComponentList } from "src/constants/components"
 import { addComponent, editComponentStyle } from 'src/store/features/editSlice';
@@ -17,24 +17,18 @@ export default function Content() {
 
         const startY = e.clientY
         const startX = e.clientX
-        const curComponent = componentList[idx]
-        const curStyle = curComponent.style
-        const curLeft = parseInt(curStyle.left)
-        const curTop = parseInt(curStyle.top)
+        const componentDOM = e.target.parentNode
+        const { clientWidth, clientHeight, offsetLeft, offsetTop } = componentDOM
 
         const move = (moveEvent) => {
             const moveX = moveEvent.clientX - startX
             const moveY = moveEvent.clientY - startY
-            
-            dispatch(editComponentStyle({
-                idx,
-                style: {
-                    left: curLeft + moveX + 'px',
-                    top:  curTop + moveY + 'px'
-                }
-            }))
-        }   
-    
+            const left = offsetLeft + moveX
+            const top = offsetTop + moveY
+
+            boundaryEditor(idx, clientWidth, clientHeight, left, top)
+        }
+
         const up = () => {
             document.removeEventListener('mousemove', move)
             document.removeEventListener('mouseup', up)
@@ -52,14 +46,13 @@ export default function Content() {
         if (!category || !idx || !categoryList) {
             return
         }
-
-        const x = e.clientX - editorRef.current.offsetLeft - 220
-        const y = e.clientY - editorRef.current.offsetTop - 64
+        let left = e.clientX - editorRef.current.offsetLeft - 220
+        let top = e.clientY - editorRef.current.offsetTop - 64
 
         const style = {
             ...categoryList.list[idx].style,
-            left: x + 'px',
-            top: y + 'px'
+            left: left + 'px',
+            top: top + 'px'
         }
 
         const component = {
@@ -68,7 +61,6 @@ export default function Content() {
         }
         dispatch(addComponent(component))
     }
-
 
     const calculateEdit = () => {
         const dynamicSize = {
@@ -82,7 +74,8 @@ export default function Content() {
                 {componentList.map((item, idx) => {
                     const Component = AllComponent[item.type]
                     return (
-                        <div 
+                        <div
+                            id={"C-" + idx}
                             className="editor-component"
                             data-type={item.type}
                             key={idx}
@@ -96,6 +89,45 @@ export default function Content() {
             </div>
         )
     }
+
+    const boundaryEditor = (idx, w, h, left, top) => {
+        if (left < 0) {
+            left = 0
+        }
+
+        if (top < 0) {
+            top = 0
+        }
+
+        if (left + w > width) {
+            left = width - w
+        }
+
+        if (top + h > height) {
+            top = height - h
+        }
+
+        dispatch(editComponentStyle({
+            idx,
+            style: {
+                left: left + 'px',
+                top: top + 'px'
+            }
+        }))
+    }
+
+    useEffect(() => {
+        if (componentList.length <= 0) {
+            return
+        }
+        // calculate component boundary
+        const componentId = `C-${componentList.length - 1}`
+        const componentDOM = document.getElementById(componentId)
+        const { clientWidth, clientHeight, offsetLeft, offsetTop } = componentDOM
+        let left = offsetLeft
+        let top = offsetTop
+        boundaryEditor(componentList.length - 1, clientWidth, clientHeight, left, top)
+    }, [componentList.length])
 
     return (
         <div className="content" onDrop={(e) => handlerDrop(e)} onDragOver={e => e.preventDefault()}>
