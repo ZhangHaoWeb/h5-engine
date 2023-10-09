@@ -12,8 +12,10 @@ export default function Content() {
     const { componentList } = useSelector(state => state.editReducer, shallowEqual)
 
     const handlerMouseDown = (e, idx) => {
-        e.preventDefault()
         e.stopPropagation()
+        if (componentList[idx].type == "ImageComponent") {
+            e.preventDefault()
+        }
 
         const startY = e.clientY
         const startX = e.clientX
