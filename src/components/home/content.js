@@ -1,4 +1,4 @@
-import { Fragment, useCallback } from "react"
+import { useRef } from "react"
 import { shallowEqual, useDispatch, useSelector } from "react-redux"
 import { SYS_ComponentList } from "src/constants/components"
 import { addComponent, editComponentStyle } from 'src/store/features/editSlice';
@@ -7,11 +7,14 @@ import Grid from "./grid"
 
 export default function Content() {
     const dispatch = useDispatch()
+    const editorRef = useRef()
     const { width, height } = useSelector(state => state.editReducer.edit)
     const { componentList } = useSelector(state => state.editReducer, shallowEqual)
 
     const handlerMouseDown = (e, idx) => {
+        e.preventDefault()
         e.stopPropagation()
+
         const startY = e.clientY
         const startX = e.clientX
         const curComponent = componentList[idx]
@@ -42,8 +45,6 @@ export default function Content() {
     }
 
     const handlerDrop = (e) => {
-        e.preventDefault()
-        e.stopPropagation()
         const dropComponent = e.dataTransfer.getData('component').split("-")
         const category = dropComponent[0]
         const idx = dropComponent[1]
@@ -52,8 +53,9 @@ export default function Content() {
             return
         }
 
-        const x = e.clientX - 220
-        const y = e.clientY - 64
+        const x = e.clientX - editorRef.current.offsetLeft - 220
+        const y = e.clientY - editorRef.current.offsetTop - 64
+
         const style = {
             ...categoryList.list[idx].style,
             left: x + 'px',
@@ -75,7 +77,7 @@ export default function Content() {
         };
 
         return (
-            <div className="editor" style={dynamicSize}>
+            <div className="editor" style={dynamicSize} ref={editorRef}>
                 <Grid />
                 {componentList.map((item, idx) => {
                     const Component = AllComponent[item.type]
