@@ -16,7 +16,6 @@ export const SYS_ComponentList =  [
                 label: "按钮",
                 defaultValue: "BUTTON",
                 style: {
-                    width: "60px",
                     background: "#313030",
                     padding: "8px 10px",
                     borderRadius: "3px",
@@ -32,9 +31,15 @@ export const SYS_ComponentList =  [
                 }
             },
             {
-                type: "IMAGE",
+                type: "ImageComponent",
                 label: "图片",
-                defaultValue: "IMAGE"
+                defaultValue: "IMAGE",
+                style: {
+                    width: "150px",
+                    height: "100px"
+                },
+                src: "https://t7.baidu.com/it/u=90694723,3137312822&fm=193&f=GIF"
+
             }
         ]
     },

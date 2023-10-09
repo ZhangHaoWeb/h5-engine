@@ -11,6 +11,7 @@ export default function Content() {
     const { componentList } = useSelector(state => state.editReducer, shallowEqual)
 
     const handlerMouseDown = (e, idx) => {
+        e.stopPropagation()
         const startY = e.clientY
         const startX = e.clientX
         const curComponent = componentList[idx]
@@ -41,6 +42,8 @@ export default function Content() {
     }
 
     const handlerDrop = (e) => {
+        e.preventDefault()
+        e.stopPropagation()
         const dropComponent = e.dataTransfer.getData('component').split("-")
         const category = dropComponent[0]
         const idx = dropComponent[1]
