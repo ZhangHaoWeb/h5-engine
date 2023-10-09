@@ -1,7 +1,9 @@
+import './image.scss';
+
 export default function Image(props) {
-    const { src, style } = props
+    const { src } = props
 
     return (
-        <img src={src} style={style} />
+        <img className="c-image" src={src} />
     )
 }
