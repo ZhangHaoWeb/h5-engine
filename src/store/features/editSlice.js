@@ -5,6 +5,7 @@ const initialState = {
         width: 375,
         height: 750
     },
+    currentComponent: -1,
     componentList: []
 }
 
@@ -26,6 +27,7 @@ export const editSlice = createSlice({
                 ...state.componentList,
                 action.payload
             ]
+            state.currentComponent = state.componentList.length - 1
         },
         editComponentStyle: (state, action) => {
             const idx = action.payload.idx
@@ -33,6 +35,7 @@ export const editSlice = createSlice({
                 ...state.componentList[idx].style,
                 ...action.payload.style
             }
+            state.currentComponent = idx
         }
     },
 })
