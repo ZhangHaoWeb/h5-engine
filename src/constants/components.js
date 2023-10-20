@@ -1,3 +1,5 @@
+import defaultImg from 'src/assets/image.jpg'
+
 export const SYS_ComponentList =  [
     {
         id: 0,
@@ -36,7 +38,7 @@ export const SYS_ComponentList =  [
                     width: "150px",
                     height: "100px"
                 },
-                src: "https://t7.baidu.com/it/u=90694723,3137312822&fm=193&f=GIF"
+                src: defaultImg
 
             }
         ]
