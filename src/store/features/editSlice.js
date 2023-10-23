@@ -12,7 +12,7 @@ const initialState = {
 export const editSlice = createSlice({
     name: "edit",
     initialState,
-    reducers : {
+    reducers: {
         changeEditSize: (state, action) => {
             state.edit = {
                 width: action.payload.width && Number(action.payload.width),
@@ -36,10 +36,18 @@ export const editSlice = createSlice({
                 ...action.payload.style
             }
             state.currentComponent = idx
+        },
+        changeCurrentComponent: (state, action) => {
+            state.currentComponent = action.payload
         }
     },
 })
 
-export const {changeEditSize, resetEditSize, addComponent, editComponentStyle} = editSlice.actions
+export const {
+    changeEditSize,
+    resetEditSize, addComponent,
+    editComponentStyle,
+    changeCurrentComponent
+} = editSlice.actions
 
 export default editSlice.reducer

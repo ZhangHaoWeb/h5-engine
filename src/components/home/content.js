@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react"
 import { shallowEqual, useDispatch, useSelector } from "react-redux"
 import { SYS_ComponentList } from "src/constants/components"
 import { addComponent, editComponentStyle } from 'src/store/features/editSlice';
+import Shape from "../common/shape/shape";
 import * as AllComponent from "src/components/common"
 import Grid from "./grid"
 
@@ -61,6 +62,8 @@ export default function Content() {
         dispatch(addComponent(component))
     }
 
+  
+
     const calculateEdit = () => {
         const dynamicSize = {
             width: `${width + 1}px`,
@@ -73,16 +76,14 @@ export default function Content() {
                 {componentList.map((item, idx) => {
                     const Component = AllComponent[item.type]
                     return (
-                        <div
-                            id={"C-" + idx}
-                            className="editor-component"
-                            data-type={item.type}
-                            key={idx}
-                            onMouseDown={(e) => handlerMouseDown(e, idx)}
-                            style={item.style}
-                        >
-                            <Component {...item} />
-                        </div>
+                        <Shape key={idx} dropStyle={item.style} componentMouseDown={handlerMouseDown} idx={idx} id={"C-" + idx}>
+                            <div
+                                className="editor-component"
+                                data-type={item.type}
+                            >
+                                <Component {...item} />
+                            </div>
+                        </Shape>
                     )
                 })}
             </div>
