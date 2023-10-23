@@ -20,6 +20,9 @@ export const SYS_ComponentList =  [
                 style: {
                     background: "#313030",
                     borderRadius: "3px",
+                    width: "80px",
+                    height: "35px",
+                    lineHeight: "35px"
                 }
             },
             {
