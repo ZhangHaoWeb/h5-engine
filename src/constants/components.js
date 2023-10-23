@@ -10,7 +10,10 @@ export const SYS_ComponentList =  [
                 label: "文字",
                 defaultValue: "双击编辑",
                 style: {
-                    fontSize: "16px"
+                    fontSize: "16px",
+                    width: "100px",
+                    height: "30px",
+                    lineHeight: "30px"
                 }
             },
             {
@@ -30,7 +33,10 @@ export const SYS_ComponentList =  [
                 label: "链接",
                 defaultValue: "https://",
                 style: {
-                    color: "#4395ff"
+                    color: "#4395ff",
+                    width: "100px",
+                    height: "30px",
+                    lineHeight: "30px"
                 }
             },
             {
